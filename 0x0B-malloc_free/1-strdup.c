@@ -1,109 +1,68 @@
-nclude "main.h"
-
-#include <stdlib.h>
-
-
-
-char *_strcpy(char *dest, char *src);
-
-
-
+#include "main.h"
 /**
- *
- *  * *_strdup - Function returns a pointer to a new string
- *
- *   * which is a duplicate of the string str.
- *
- *    * @str: String
- *
- *     * Return: Pointer to a new string
- *
- *      */
+ *_strlen - count array
+ *@s: array of elements
+ *Return: 1
+ */
 
-char *_strdup(char *str)
-
+int _strlen(char *s)
 {
+unsigned int i;
 
-		char *dupli, *copy;
-
-			int len = 0;
-
-
-
-				if (str == NULL)
-
-							return (NULL);
-
-
-
-					for (copy = str; *copy != '\0'; copy++)
-
-								len++;
-
-
-
-						dupli = malloc(len + 1);
-
-							if (dupli == NULL)
-
-										return (NULL);
-
-
-
-								_strcpy(dupli, str);
-
-									return (dupli);
-
-
-
+i = 0;
+while (s[i] != '\0') /*count character of string*/
+{
+i++;
 }
 
-
-
-
-
-
+return (i);
+}
 
 /**
- *
- *  * *_strcpy - Copy the string pointed
- *
- *   *
- *
- *    * @dest: Pointer of a char[] variable
- *
- *     * @src: Pointer of a char[] variable
- *
- *      * Return: Copy of the pointer char
- *
- *       */
+ *_strcpy - copy arrays
+ *@src: array of elements
+ *@dest: dest array
+ *Return: dest
+ */
 
 char *_strcpy(char *dest, char *src)
-
 {
+int i = 0;
 
-		int counter = 0;
+while (src[i] != '\0')
+{
+dest[i] = src[i];
+i++;
+}
+dest[i] = '\0';
 
+return (dest);
+}
 
+/**
+ *_strdup - array for prints a string
+ *@str: array of elements
+ *Return: pointer
+ */
 
-			while (*src != '\0')
+char *_strdup(char *str)
+{
+char *dst;
+unsigned int size;
 
-					{
+if (str == 0)
+{
+return (NULL);
+}
 
-								*dest = *src;
+size = _strlen(str) + 1;
 
-										dest++;
+dst = (char *) malloc(size *sizeof(char));
 
-												src++;
-
-														counter++;
-
-															}
-
-					*dest = '\0';
-
-							dest -= counter;
-
-									return (dest);
-
+if (dst == 0)
+{
+return (NULL);
+}
+_strcpy(dst, str);
+return (dst);
 }
