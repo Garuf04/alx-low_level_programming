@@ -1,39 +1,27 @@
 #include "main.h"
-/**
- *create_array - array for prints a string
- *@size: number elements array
- *@c: char
- *Return: pointer
- */
+#include <stdlib.h>
 
+/**
+ * *create_array - Function that creates arrays of chars
+ * @size: Size of the char
+ * @c: Char to be initialized
+ * Return: Array of chars
+ */
 char *create_array(unsigned int size, char c)
 {
-char *buffer;
-unsigned int position;
+	char *ptc;
+	unsigned int i;
 
-if (size == 0)
-{
-return (NULL);
-}
+	if (size == 0)
+		return (NULL);
 
-/*Define values with malloc*/
-buffer = (char *) malloc(size * sizeof(c));
+	ptc = (char *) malloc(size * (sizeof(char)));
 
-if (buffer == 0)
-{
-return (NULL);
-}
+	if (ptc == NULL)
+		return (NULL);
 
-else
-{
-position = 0;
-while (position < size) /*While for array*/
-{
-*(buffer + position) = c;
-position++;
-}
+	for (i = 0; i < size; i++)
+		ptc[i] = c;
 
-return (buffer);
-}
-
+	return (ptc);
 }
